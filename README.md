@@ -4,12 +4,12 @@
 
 ## About TAPM
 
-<p>TAPM or Tracking Activit Project Management is a Project Tracker Web Application focusing on PBL (Project Based Learning) Projects that is made in Asia Pacific College.</p><br>
-<p>This Project is made as a fullfilment for PBL course made by Group Abyss of BSCS-SS201 from Asia Pacific College S.Y. 2020-2024, with its client, Mr. Jayvee M. Cabardo, Director of Project Development Office</p>
+TAPM or Tracking Activit Project Management is a Project Tracker Web Application focusing on PBL (Project Based Learning) Projects that is made in Asia Pacific College.
+This Project is made as a fullfilment for PBL course made by Group Abyss of BSCS-SS201 from Asia Pacific College S.Y. 2020-2024, with its client, Mr. Jayvee M. Cabardo, Director of Project Development Office
 
 ## How to Install
 
-<p>The Project is still currently on its Development Phase. To be able to use this, Follow the Instructions below:</p><br>
+The Project is still currently on its Development Phase. To be able to use this, Follow the Instructions below:
 Make sure that you have [XAMPP](https://www.apachefriends.org/download.html) and [Node.js](https://nodejs.org/en/download/current) Installed.
 1. Open Visual Studio Code.
 1. Clone the [Repository](https://github.com/APC-SoCIT/APC_2023_2024_T1_TAPM.git) to /xampp/htdocs/repository_here
@@ -25,4 +25,4 @@ Make sure that you have [XAMPP](https://www.apachefriends.org/download.html) and
 1. Then look for path public/storageExample and copy-paste its content to public/storage
 1. Lastly, 'php artisan serve'. Activate a new terminal then type 'npm run dev'
 
-<p>If any error persists, please do contact the developers to solve the problems.<p>
+If any error persists, please do contact the developers to solve the problems.
