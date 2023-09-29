@@ -2,12 +2,12 @@
 
 <p align="center"><img src="public\storageExample\tapm-logo.png" width="200" alt="TAPM Logo"></p>
 
-## About TAPM ##
+## About TAPM
 
 <p>TAPM or Tracking Activit Project Management is a Project Tracker Web Application focusing on PBL (Project Based Learning) Projects that is made in Asia Pacific College.</p><br>
 <p>This Project is made as a fullfilment for PBL course made by Group Abyss of BSCS-SS201 from Asia Pacific College S.Y. 2020-2024, with its client, Mr. Jayvee M. Cabardo, Director of Project Development Office</p>
 
-## How to Install ##
+## How to Install
 
 <p>The Project is still currently on its Development Phase. To be able to use this, Follow the Instructions below:</p><br>
 Make sure that you have [XAMPP](https://www.apachefriends.org/download.html) and [Node.js](https://nodejs.org/en/download/current) Installed.
