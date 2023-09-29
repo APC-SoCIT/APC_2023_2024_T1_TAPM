@@ -41,6 +41,7 @@ Route::middleware(['auth', 'user-access:office'])->group(function () {
     Route::post('office/project/task', [App\Http\Controllers\GroupProjectController::class, 'taskStore'])->name('office/task');
     Route::post('office/feedback', [App\Http\Controllers\GroupProjectController::class, 'feedbackStore'])->name('office/feedback');
     Route::post('office/project/team', [App\Http\Controllers\GroupProjectController::class, 'memberStore'])->name('office/team');
+    Route::put('office/home', [App\Http\Controllers\GroupProjectController::class, 'groupUpdate'])->name('office/edit');
     Route::put('office/task', [App\Http\Controllers\GroupProjectController::class, 'taskUpdate'])->name('office/board');
     Route::delete('office/home', [App\Http\Controllers\GroupProjectController::class, 'groupDestroy']);
     Route::delete('office/task', [App\Http\Controllers\GroupProjectController::class, 'taskDestroy']);
