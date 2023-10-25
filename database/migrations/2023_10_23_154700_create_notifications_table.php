@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id')->unsigned();
-            $table->integer('project_id')->unsigned();
-            $table->integer('parent_id')->unsigned()->nullable();
-            $table->text('comment');
+            $table->integer('notify_id')->unsigned();
+            $table->string('type');
+            $table->text('data');
+            $table->text('link');
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -26,9 +27,9 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
             
-            $table->foreign('project_id')
+            $table->foreign('notify_id')
                 ->references('id')
-                ->on('projects')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('notifications');
     }
 };

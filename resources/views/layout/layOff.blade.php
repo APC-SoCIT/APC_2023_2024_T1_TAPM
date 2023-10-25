@@ -21,6 +21,8 @@
                     {{ config('app.name', 'TAPM') }}
                 </a>
 
+                {{-- @include('layout.notify', ['notifications' => $users->notifications, 'user_id' => $users->id])  --}}
+
                 <ul class="navbar-nav ms-auto">
                   <div>
                     <button type="button" class="btn btn-outline-dark text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -56,7 +58,7 @@
                               <h4>{{ __('Continue to Administration View?')}}</h4>
                             </div>
                             <div class="modal-footer">
-                              <a href="{{ URL::to('admin')}}" type="button" class="btn btn-warning">{{ __('Proceed') }}</a>
+                              <a href="{{ URL::to('admin/user')}}" type="button" class="btn btn-warning">{{ __('Proceed') }}</a>
                             </div>
                               </form>
                           </div>

@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GroupProjectController;
-use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +45,9 @@ Route::middleware(['auth', 'user-access:office'])->group(function () {
     Route::delete('office/task', [App\Http\Controllers\GroupProjectController::class, 'taskDestroy']);
     Route::delete('office/project/team', [App\Http\Controllers\GroupProjectController::class, 'teamDestroy']);
     Route::delete('office/feedback', [App\Http\Controllers\GroupProjectController::class, 'feedbackDestroy'])->name('office/feedDel');
+    Route::get('office/project/{id}/calendar', [App\Http\Controllers\GroupProjectController::class, 'calendar'])->name('office/calendar');
+
+    Route::get('/notify', [App\Http\Controllers\NotificationController::class, 'index'])->name('layout/notify');
 
     // Admin Privilege
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin/index');
@@ -82,7 +83,7 @@ Route::middleware(['auth', 'user-access:adviser'])->group(function () {
 
 // Secondary Privilege View or the Teacher View
 Route::middleware(['auth', 'user-access:teacher'])->group(function () {
-    Route::get('/teacher/home', [App\Http\Controllers\GroupProjectController::class, 'index']);
+    Route::get('/teacher/home', [App\Http\Controllers\GroupProjectController::class, 'index'])->name('teacher/home');
     Route::get('/teacher/project/{id}', [App\Http\Controllers\GroupProjectController::class, 'show']);
     Route::get('/teacher/project/{id}/task', [App\Http\Controllers\GroupProjectController::class, 'taskShow']);
     Route::get('/teacher/project/{id}/team', [App\Http\Controllers\GroupProjectController::class, 'teamShow']);
