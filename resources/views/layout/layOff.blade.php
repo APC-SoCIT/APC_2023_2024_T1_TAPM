@@ -13,6 +13,23 @@
     @vite(['resources/css/app.css','resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+<div class="fixed-alert-container">
+  @if ($message = Session::get('success'))
+  <div id="success-alert" class="alert alert-success alert-dismissible fade show position-fixed" role="alert">
+      <strong>{{ $message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+  @if($errors->any())
+  <div id="error-alert" class="alert alert-danger alert-dismissible fade show position-fixed" role="alert">
+      @foreach($errors->all() as $error)
+      <p>{{ $error }}</p>
+      @endforeach
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+</div>
+
 <div class="bg-image" style="background-image: url('/storage/test.png'); height: 100vh">
     <div id='app'>    
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #043877;">
@@ -21,7 +38,23 @@
                     {{ config('app.name', 'TAPM') }}
                 </a>
 
-                {{-- @include('layout.notify', ['notifications' => $users->notifications, 'user_id' => $users->id])  --}}
+                <div class="dropdown">
+                  <button class="btn" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa-regular fa-bell" style="color: #ffffff;"></i>
+                    <span class="badge badge-light">{{ auth()->user()->notifications->count() }}</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="notificationDropdown">
+                    @forelse (auth()->user()->notifications as $notification)
+                        <a class="dropdown-item" href = "{{ $notification->data['link']}}">
+                            {{ $notification->data['data']}}
+                        </a>
+                    @empty
+                        <a class="dropdown-item">
+                            {{ __('No new notifications') }}
+                        </a>
+                    @endforelse
+                  </div>
+                </div>
 
                 <ul class="navbar-nav ms-auto">
                   <div>
@@ -132,3 +165,21 @@
 </div>
 </body>
 </html>
+
+<script>
+  // Automatically close success alert after 5 seconds (5000 milliseconds)
+  const successAlert = document.getElementById('success-alert');
+  if (successAlert) {
+      setTimeout(function() {
+          successAlert.style.display = 'none';
+      }, 5000); // Adjust the duration as needed
+  }
+
+  // Automatically close error alert after 5 seconds (5000 milliseconds)
+  const errorAlert = document.getElementById('error-alert');
+  if (errorAlert) {
+      setTimeout(function() {
+          errorAlert.style.display = 'none';
+      }, 5000); // Adjust the duration as needed
+  }
+</script>

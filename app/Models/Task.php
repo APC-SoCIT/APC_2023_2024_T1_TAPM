@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes, Notifiable;
 
     protected $table = 'tasks';
     protected $primaryKay = 'id';
+    protected $dates = ['deleted_at'];
+
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +30,7 @@ class Task extends Model
         'content',
         'due_date',
         'status',
+        'updated_by',
     ];
 
     /**
@@ -46,5 +51,9 @@ class Task extends Model
     public function updatedBy()
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+    public function group_project()
+    {
+        return $this->belongsTo(GroupProject::class);
     }
 }

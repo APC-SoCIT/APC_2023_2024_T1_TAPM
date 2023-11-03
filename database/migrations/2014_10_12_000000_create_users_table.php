@@ -20,10 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('type');
-            /* Users: 0=>Office, 1=>Teacher, 2=>Adviser 3=Student */
+            /* Users: 0=>Office, 1=>Faculty, 2=>Student */
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

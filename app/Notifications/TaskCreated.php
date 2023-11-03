@@ -5,7 +5,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
-class TaskCompleted extends Notification
+class TaskCreated extends Notification
 {
     use Queueable;
 
@@ -21,6 +21,7 @@ class TaskCompleted extends Notification
         $this->name = $name;
         $this->type = $type;
     }
+
     /**
      * Get the notification's delivery channels.
      *
@@ -35,7 +36,7 @@ class TaskCompleted extends Notification
     /**
      * Get the database representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed  $notifiable 
      * @return array
      */
     public function toDatabase($notifiable)
@@ -44,7 +45,7 @@ class TaskCompleted extends Notification
 
         return [
             'link' => url($routePrefix . '/project/' . $this->group_id . '/task'),
-            'data' => 'The task ' . $this->title . ' has been completed by ' . $this->name . '.',
+            'data' => "You're Assign by " . $this->name . " to the Task ". $this->title . ".",
         ];
     }
 

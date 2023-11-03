@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory,  SoftDeletes, Notifiable;
 
     protected $table = 'projects';
     protected $primaryKay = 'id';
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +39,10 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function group_project()
+    {
+        return $this->belongsTo(GroupProject::class);
+    }
     
     /**
      * The has Many Relationship
@@ -46,5 +53,9 @@ class Project extends Model
     public function feedbacks()
     {
         return $this->hasMany(Feedback::class)->whereNull('parent_id');
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'members', 'group_project_id', 'user_id');
     }
 }
